@@ -1,11 +1,3 @@
-(def example (string/join
-               ["3   4"
-                "4   3"
-                "2   5"
-                "1   3"
-                "3   9"
-                "3   3"] "\n"))
-
 (def parser
   (peg/compile
     ~{:main (* :lines)
@@ -43,8 +35,3 @@
     (peg/match parser input)
     (transpose)
     (aggr-similarity-score)))
-
-(defn main [&]
-  (do
-    (print "Solution Day 1 (A): " (solve-a (slurp "./data/historian-hysteria.txt")))
-    (print "Solution Day 1 (B): " (solve-b (slurp "./data/historian-hysteria.txt")))))
